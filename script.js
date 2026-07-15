@@ -19,6 +19,28 @@ function getCOB(s) {
     return "-";
 }
 
+function getSMB(s) {
+
+    if (!s.consoleError) return 0;
+
+    const enabled = s.consoleError.some(x =>
+        x.includes("SMB enabled")
+    );
+
+    if (!enabled) return 0;
+
+    const max = s.consoleError.find(x =>
+        x.includes("maxBolus:")
+    );
+
+    if (max) {
+        const match = max.match(/maxBolus:\s*([\d.]+)/);
+        if (match) return match[1];
+    }
+
+    return 0;
+}
+
 loadBtn.onclick = async function () {
 
     let url = document.getElementById("nsUrl").value.trim();
@@ -75,7 +97,7 @@ loadBtn.onclick = async function () {
             <div>ГК: ${s.bg ? (s.bg / 18).toFixed(1) : "-"} ммоль/л</div>
             <div>IOB: ${item.openaps.iob?.iob ?? "-"} Ед</div>
             <div>COB: ${getCOB(s)} г</div>
-            <div>SMB: ${s.smb ?? 0} Ед</div>
+            <div>SMB: ${getSMB(s)} Ед</div>
             <div>ВБС: ${s.rate ?? "-"} Ед/ч</div>
             `;
             
