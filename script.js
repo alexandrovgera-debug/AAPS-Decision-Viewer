@@ -6,7 +6,7 @@ const detailsDiv = document.getElementById("details");
 loadBtn.onclick = async function () {
 
     let url = document.getElementById("nsUrl").value.trim();
-    let secret = document.getElementById("apiSecret").value.trim();
+    let secret = "";
 
     if (!url) {
         alert("Введите URL Nightscout");
@@ -22,11 +22,7 @@ loadBtn.onclick = async function () {
 
     try {
 
-        const response = await fetch(api, {
-            headers: {
-                "api-secret": secret
-            }
-        });
+        const response = await fetch(api);
 
         const data = await response.json();
 
