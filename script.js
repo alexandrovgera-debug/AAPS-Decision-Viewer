@@ -2,6 +2,22 @@ const loadBtn = document.getElementById("loadBtn");
 const cyclesDiv = document.getElementById("cycles");
 const detailsDiv = document.getElementById("details");
 
+function getCOB(s) {
+
+    if (s.cob !== undefined) {
+        return s.cob;
+    }
+
+    if (s.reason) {
+        const match = s.reason.match(/COB:\s*([\d.,]+)/);
+
+        if (match) {
+            return match[1];
+        }
+    }
+
+    return "-";
+}
 
 loadBtn.onclick = async function () {
 
@@ -58,8 +74,8 @@ loadBtn.onclick = async function () {
             div.innerHTML = `
             <b>${new Date(item.created_at).toLocaleString()}</b><br>
             ГК: ${s.bg ? (s.bg / 18).toFixed(1) : "-"} ммоль/л |
-            IOB: ${s.iob ?? "-"} |
-            COB: ${s.cob ?? "-"}<br>
+            IOB: ${s.iob ?? item.openaps.iob?.iob ?? "-"} |
+            COB: ${getCOB(s)}<br>
             SMB: ${s.smb ?? 0} |
             ВБС: ${s.rate ?? "-"} Ед/ч
             `;
@@ -85,22 +101,6 @@ loadBtn.onclick = async function () {
 
 };
 
-function getCOB(s) {
-
-    if (s.cob !== undefined) {
-        return s.cob;
-    }
-
-    if (s.reason) {
-        const match = s.reason.match(/COB:\s*([\d.,]+)/);
-
-        if (match) {
-            return match[1];
-        }
-    }
-
-    return "-";
-}
 
 function showDetails(item){
 
