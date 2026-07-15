@@ -57,7 +57,7 @@ loadBtn.onclick = async function () {
 
             div.innerHTML = `
             <b>${new Date(item.created_at).toLocaleString()}</b><br>
-            ГК: ${s.bg ?? "-"} |
+            ГК: ${s.bg ? (s.bg / 18).toFixed(1) : "-"} ммоль/л |
             IOB: ${s.iob ?? "-"} |
             COB: ${s.cob ?? "-"}<br>
             SMB: ${s.smb ?? 0} |
@@ -103,7 +103,7 @@ ${new Date(item.created_at).toLocaleString()}
 
 <div class="row">
 <span class="name">Глюкоза:</span>
-${s.bg ?? "-"} ммоль/л
+${s.bg ? (s.bg / 18).toFixed(1) : "-"} ммоль/л
 </div>
 
 
