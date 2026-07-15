@@ -85,7 +85,22 @@ loadBtn.onclick = async function () {
 
 };
 
+function getCOB(s) {
 
+    if (s.cob !== undefined) {
+        return s.cob;
+    }
+
+    if (s.reason) {
+        const match = s.reason.match(/COB:\s*([\d.,]+)/);
+
+        if (match) {
+            return match[1];
+        }
+    }
+
+    return "-";
+}
 
 function showDetails(item){
 
@@ -117,7 +132,7 @@ ${s.iob ?? item.openaps.iob?.iob ?? "-"} Ед
 
 <div class="row">
 <span class="name">COB:</span>
-${s.cob ?? "-"} г
+${getCOB(s)} г
 </div>
 
 
