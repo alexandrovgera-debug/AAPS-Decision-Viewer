@@ -72,11 +72,9 @@ loadBtn.onclick = async function () {
             
             div.innerHTML = `
             <b>${new Date(item.created_at).toLocaleString()}</b>
-            <br>
             <div>ГК: ${s.bg ? (s.bg / 18).toFixed(1) : "-"} ммоль/л</div>
             <div>IOB: ${item.openaps.iob?.iob ?? "-"} Ед</div>
             <div>COB: ${getCOB(s)} г</div>
-            <br>
             <div>SMB: ${s.smb ?? 0} Ед</div>
             <div>ВБС: ${s.rate ?? "-"} Ед/ч</div>
             `;
