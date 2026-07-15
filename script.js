@@ -71,12 +71,14 @@ loadBtn.onclick = async function () {
             div.className = "cycle";
             
             div.innerHTML = `
-            <b>${new Date(item.created_at).toLocaleString()}</b><br>
-            ГК: ${s.bg ? (s.bg / 18).toFixed(1) : "-"} ммоль/л |
-            IOB: ${item.openaps.iob?.iob ?? "-"} Ед |
-            COB: ${getCOB(s)} г<br>
-            SMB: ${s.smb ?? 0} |
-            ВБС: ${s.rate ?? "-"} Ед/ч
+            <b>${new Date(item.created_at).toLocaleString()}</b>
+            
+            <div>ГК: ${s.bg ? (s.bg / 18).toFixed(1) : "-"} ммоль/л</div>
+            <div>IOB: ${item.openaps.iob?.iob ?? "-"} Ед</div>
+            <div>COB: ${getCOB(s)} г</div>
+            
+            <div>SMB: ${s.smb ?? 0} Ед</div>
+            <div>ВБС: ${s.rate ?? "-"} Ед/ч</div>
             `;
             
             div.onclick = function(){
