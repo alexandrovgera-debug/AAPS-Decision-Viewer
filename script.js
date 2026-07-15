@@ -89,11 +89,13 @@ loadBtn.onclick = async function () {
 
 function showDetails(item){
 
-
     const s = item.openaps.suggested;
 
+    const bg = s.bg ? (Number(s.bg) / 18).toFixed(1) : "-";
 
     detailsDiv.innerHTML = `
+
+<h3>Решение AAPS</h3>
 
 <div class="row">
 <span class="name">Время:</span>
@@ -103,13 +105,13 @@ ${new Date(item.created_at).toLocaleString()}
 
 <div class="row">
 <span class="name">Глюкоза:</span>
-${s.bg ? (s.bg / 18).toFixed(1) : "-"} ммоль/л
+${bg} ммоль/л
 </div>
 
 
 <div class="row">
 <span class="name">IOB:</span>
-${s.iob ?? "-"} Ед
+${s.iob ?? item.openaps.iob?.iob ?? "-"} Ед
 </div>
 
 
@@ -119,6 +121,12 @@ ${s.cob ?? "-"} г
 </div>
 
 
+<hr>
+
+
+<h3>Расчёт инсулина</h3>
+
+
 <div class="row">
 <span class="name">insulinReq:</span>
 ${s.insulinReq ?? "-"} Ед
@@ -126,45 +134,74 @@ ${s.insulinReq ?? "-"} Ед
 
 
 <div class="row">
-<span class="name">microBolusAllowed:</span>
-${s.microBolusAllowed ?? "-"}
+<span class="name">Разрешение SMB:</span>
+${s.microBolusAllowed === true ? "ДА" : "НЕТ"}
 </div>
 
 
 <div class="row">
-<span class="name">maxBolus:</span>
+<span class="name">Максимальный SMB:</span>
 ${s.maxBolus ?? "-"} Ед
 </div>
 
 
 <div class="row">
-<span class="name">SMB:</span>
+<span class="name">Выданный SMB:</span>
 ${s.smb ?? 0} Ед
 </div>
 
 
+<hr>
+
+
+<h3>Временная базальная скорость</h3>
+
+
 <div class="row">
-<span class="name">ВБС rate:</span>
+<span class="name">Скорость:</span>
 ${s.rate ?? "-"} Ед/ч
 </div>
 
 
 <div class="row">
-<span class="name">Время ВБС:</span>
+<span class="name">Длительность:</span>
 ${s.duration ?? "-"} мин
 </div>
 
 
+<hr>
+
+
+<h3>Прогноз</h3>
+
+
 <div class="row">
-<span class="name">Причина:</span>
+<span class="name">eventualBG:</span>
+${s.eventualBG ? (s.eventualBG / 18).toFixed(1) : "-"} ммоль/л
+</div>
+
+
+<div class="row">
+<span class="name">targetBG:</span>
+${s.targetBG ? (s.targetBG / 18).toFixed(1) : "-"} ммоль/л
+</div>
+
+
+<hr>
+
+
+<h3>Почему принято такое решение</h3>
+
+<div>
 ${s.reason ?? "-"}
 </div>
 
 
 <hr>
 
+
 <details>
-<summary>Исходный JSON</summary>
+<summary>Полный JSON</summary>
 <pre>${JSON.stringify(s,null,2)}</pre>
 </details>
 
