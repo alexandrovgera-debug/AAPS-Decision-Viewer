@@ -1,1 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: #f5f5f5;
+    color: #222;
+}
 
+h1 {
+    font-size: 26px;
+}
+
+h2 {
+    margin-top: 25px;
+}
+
+.settings {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 500px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+#cycles {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.cycle {
+    padding: 10px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    background: white;
+}
+
+.cycle:hover {
+    background: #eeeeee;
+}
+
+#details {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+}
+
+.row {
+    margin-bottom: 8px;
+}
+
+.name {
+    font-weight: bold;
+}
