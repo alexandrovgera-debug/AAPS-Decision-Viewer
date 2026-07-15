@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AAPS Decision Viewer</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>AAPS Decision Viewer</h1>
+
+<div class="settings">
+
+<label>
+Nightscout URL:
+</label>
+
+<input id="nsUrl" 
+placeholder="https://your-site.herokuapp.com">
+
+<label>
+API Secret:
+</label>
+
+<input id="apiSecret" 
+type="password"
+placeholder="Введите API Secret">
+
+<button id="loadBtn">
+Загрузить последние 6 часов
+</button>
+
+</div>
+
+
+<hr>
+
+
+<h2>Циклы AAPS</h2>
+
+<div id="cycles">
+Ожидание загрузки...
+</div>
+
+
+<hr>
+
+
+<h2>Детали решения</h2>
+
+<div id="details">
+Выберите цикл выше
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
